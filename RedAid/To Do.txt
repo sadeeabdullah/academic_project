@@ -1,2 +1,0 @@
-1. add the update profile option inside profile
-2. add back button
