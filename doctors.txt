@@ -1,0 +1,6 @@
+Dr. Khabib (General) - 500tk
+Dr. Leonardo (Dentist) - 800tk
+Dr. Joshim (Cardio) - 1000tk
+Dr. Sadio (Neuro) - 1200tk
+Dr. Messi (Ortho) - 900tk
+Dr. Ronaldo (Pediatrics) - 600tk

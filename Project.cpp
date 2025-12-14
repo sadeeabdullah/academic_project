@@ -4,6 +4,7 @@
 #include <limits>
 #include <fstream>
 #include <sstream>
+#include <vector>
 
 #define nl '\n'
 using namespace std;
@@ -12,6 +13,7 @@ using namespace std;
 const string USER_DB = "users.txt";
 const string APP_DB = "appointments.txt";
 const string REC_DB = "records.txt";
+const string DOC_DB = "doctors.txt";
 
 
 //tracking the user here
@@ -232,21 +234,37 @@ bool loginUser()
 //adding consultation
 void consultation(){
 
-    string docs[6] = {
-        "Dr. Khabib (General) - 500tk",
-        "Dr. Leonardo (Dentist) - 800tk",
-        "Dr. Joshim (Cardio) - 1000tk",
-        "Dr. Sadio (Neuro) - 1200tk",
-        "Dr. Messi (Ortho) - 900tk",
-        "Dr. Ronaldo (Pediatrics) - 600tk"
-    };
+    //string docs[6] = {
+        //"Dr. Khabib (General) - 500tk",
+        //"Dr. Leonardo (Dentist) - 800tk",
+       // "Dr. Joshim (Cardio) - 1000tk",
+     //   "Dr. Sadio (Neuro) - 1200tk",
+   //     "Dr. Messi (Ortho) - 900tk",
+   //     "Dr. Ronaldo (Pediatrics) - 600tk"
+   // };
+
+   vector<string> docs;      // fetching doctors information and setting it to the vector
+
+   ifstream fin(DOC_DB);
+
+   string line;
+   while(getline(fin, line))
+   {
+       docs.push_back(line);
+   }
+
     cout << nl << "===== Doctor Consultation =====" << nl;
 
-    // showing the doctor list
-    for(int i = 0; i < 6; i++)
-    {
-        cout << (i + 1) << ". " << docs[i] << nl;
-    }
+    if (docs.empty()) {
+    cout << "No doctors available.\n";
+    return;
+}
+
+for (size_t i = 0; i < docs.size(); i++)
+{
+    cout << (i + 1) << ". " << docs[i] << nl;
+}
+
 
     int choice;
     cout << "Select Doctor (1 - 6): ";
