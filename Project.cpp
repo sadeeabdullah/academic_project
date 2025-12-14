@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <string>
+#include<cstdlib>       // added cstdlib
 #include <limits>
 #include <fstream>
 #include <sstream>
