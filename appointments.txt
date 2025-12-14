@@ -2,3 +2,4 @@
 01582451146,Dr. Leonardo (Dentist) - 800tk,confirmed
 01582451146,Dr. Leonardo (Dentist) - 800tk,confirmed
 01582451146,Dr. Messi (Ortho) - 900tk,confirmed
+01582451146,Dr. Khabib (General) - 500tk,confirmed

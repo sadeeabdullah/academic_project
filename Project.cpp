@@ -234,14 +234,6 @@ bool loginUser()
 //adding consultation
 void consultation(){
 
-    //string docs[6] = {
-        //"Dr. Khabib (General) - 500tk",
-        //"Dr. Leonardo (Dentist) - 800tk",
-       // "Dr. Joshim (Cardio) - 1000tk",
-     //   "Dr. Sadio (Neuro) - 1200tk",
-   //     "Dr. Messi (Ortho) - 900tk",
-   //     "Dr. Ronaldo (Pediatrics) - 600tk"
-   // };
 
    vector<string> docs;      // fetching doctors information and setting it to the vector
 
@@ -260,7 +252,7 @@ void consultation(){
     return;
 }
 
-for (size_t i = 0; i < docs.size(); i++)
+for (int i = 0; i < docs.size(); i++)
 {
     cout << (i + 1) << ". " << docs[i] << nl;
 }
