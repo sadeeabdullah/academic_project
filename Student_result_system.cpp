@@ -1,6 +1,7 @@
 #include <iostream>
 #include <limits>
 #include <cctype>
+#include <string>
 using namespace std;
 
 #define SIZE 1000
@@ -116,7 +117,7 @@ Node* createNode(Student s){
  Node* insertBST(Node* node, Student s){
     if(!node) return createNode(s);
 
-    if(s.marks < node->data.marks)  node->left = insertBST(node->left, s);
+    if(s.marks > node->data.marks)  node->left = insertBST(node->left, s);
     else  node->right = insertBST(node-> right, s);
 
     return node;
@@ -142,6 +143,15 @@ Node* createNode(Student s){
             delete node;
             return t;
         }
+
+    Node* successor = node->right;
+    while(successor->left)
+        successor = successor->left;
+
+    node->data = successor->data;
+    node->right = deleteBST(node->right, successor->data.id);
+
+    return node;
     }
 
     node->left = deleteBST(node->left, id);
@@ -276,7 +286,15 @@ void updateMarks(){
 
     push({"UPDATE", s->id, oldMarks});
 
-    s->marks = newMarks;
+    // removing  the old node
+    root = deleteBST(root, s->id);   
+
+
+    // updating the value
+    s->marks = newMarks;     
+
+    //add
+    root = insertBST(root, *s); 
 
     cout << "Updated" << endl;
 }
@@ -291,8 +309,13 @@ void undo(){
     Action a = pop();
     if(a.type == "UPDATE"){
         Student* s = searchHash(a.id);
-        if(s) s->marks = a.marks;
-        cout << "Undo UPDATE successful" << endl;
+    if(s){
+        root = deleteBST(root, s->id);
+        s->marks = a.marks;
+        root = insertBST(root, *s);
+    }
+    
+    cout << "Undo UPDATE successful" << endl;
     }else if(a.type == "ADD"){
         deleteHash(a.id);
         root = deleteBST(root, a.id);
@@ -323,28 +346,4 @@ int main(){
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
